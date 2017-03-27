@@ -10,7 +10,7 @@ export default new Router({
     {
       path: '*',
       redirect: to => {
-        return '/demo/firstMenu/index'
+        return '/demo/first_menu/index'
       }
     }
   ]

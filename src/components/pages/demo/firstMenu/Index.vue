@@ -6,9 +6,10 @@
   </section>
 </template>
 <script>
+import cookies from 'js-cookie'
 import { mapState } from 'vuex'
 import { CmcpDemo } from '@/components/modules'
-import Domain from '@/domain'
+import { DOMAIN, TOKEN_NAME } from '@/utils/config'
 export default {
   // 外部属性
   props: {
@@ -17,14 +18,14 @@ export default {
       default: '111'
     }
   },
-  // 计算属性
+  // 自有属性
   data () {
     return {
       // 参数对象
       params: {}
     }
   },
-  // 自有属性
+  // 计算属性
   computed: {
     ...mapState({
       xxx: state => state.demo.firstMenu.xxx
@@ -34,13 +35,13 @@ export default {
   methods: {
     // 初始化想法
     init () {
-      this.$cookie.set('token', 'xxxxxx', {domain: Domain.tlp})
+      cookies.set(TOKEN_NAME, 'xxxxxx', {domain: DOMAIN.tld})
       this.$store.commit('m:demo/firstMenu/xxx', '示例变量')
       this.$store.dispatch('a:demo/firstMenu/getXxx1', this.params)
     },
     // 登出
     logout () {
-      this.$store.commit('m:common/access/logout')
+      this.$store.commit('m:common/account/logout')
     }
   },
   // 监听方法

@@ -2,7 +2,7 @@
  * 示例文件，正式开发时应删除
  */
 
-import rc from '@/resource'
+import ajax from '@/utils/ajax'
 
 // vuex state
 const state = {
@@ -19,9 +19,9 @@ const mutations = {
 const actions = {
   // normal (has token)
   'a:demo/firstMenu/getXxx1' ({commit}, params) {
-    rc.api({
-      url: '/xxx/xxx',
-      params: params
+    ajax.api({
+      cmd: 'operation/userAndOwner/userNameIdList',
+      parameters: params
     }).then(
       res => {
         commit('m:demo/firstMenu/xxx', res)
@@ -33,25 +33,9 @@ const actions = {
   },
   // normal (no token)
   'a:demo/firstMenu/getXxx2' ({commit}, params) {
-    rc.apiPublic({
-      url: '/xxx/xxx',
-      params: params
-    }).then(
-      res => {
-        commit('m:demo/firstMenu/xxx', res)
-      },
-      rej => {
-        commit('m:demo/firstMenu/xxx', '')
-      }
-    )
-  },
-  // upload file
-  'a:demo/firstMenu/getXxx3' ({commit}, file) {
-    rc.apiPublic({
-      url: '/xxx/xxx',
-      params: {
-        file: file
-      }
+    ajax.apiPublic({
+      cmd: '/xxx/xxx',
+      parameters: params
     }).then(
       res => {
         commit('m:demo/firstMenu/xxx', res)
@@ -62,13 +46,11 @@ const actions = {
     )
   },
   // has Promise
-  'a:demo/firstMenu/setXxx' ({commit}, file) {
+  'a:demo/firstMenu/setXxx' ({commit}, params) {
     return new Promise((resolve, reject) => {
-      rc.api({
-        url: '/xxx/xxx',
-        params: {
-          file: file
-        }
+      ajax.api({
+        cmd: '/xxx/xxx',
+        parameters: params
       }).then(
         res => {
           commit('m:demo/firstMenu/xxx', res)

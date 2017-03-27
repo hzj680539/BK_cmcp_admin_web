@@ -12,11 +12,11 @@ const routes = [
     component: layout,
     children: [
       {
-        path: 'firstMenu/index',  // 子模块首页
+        path: 'first_menu/index',  // 子模块首页
         component: firstMenu.index
       },
       {
-        path: 'firstMenu/detail', // 子模块详情页
+        path: 'first_menu/detail', // 子模块详情页
         component: firstMenu.detail
       }
     ]

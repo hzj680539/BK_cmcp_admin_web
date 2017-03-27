@@ -1,8 +1,8 @@
 import tips from './tips'
-import access from './access'
+import account from './account'
 export default {
   modules: {
     tips,
-    access
+    account
   }
 }
