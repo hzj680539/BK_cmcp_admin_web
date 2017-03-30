@@ -37,7 +37,7 @@ export default {
     init () {
       cookies.set(TOKEN_NAME, 'xxxxxx', {domain: DOMAIN.tld})
       this.$store.commit('m:demo/firstMenu/xxx', '示例变量')
-      this.$store.dispatch('a:demo/firstMenu/getXxx1', this.params)
+      // this.$store.dispatch(demo.firstMenu.search.actionName, this.params)
     },
     // 登出
     logout () {

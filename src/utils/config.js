@@ -22,7 +22,7 @@ const config = {
     apiPath: '//api.preisesol.com/cgi'
   },
   // 测试环境
-  'beta': {
+  'test': {
     home: '//cmcp.i5sesol.com',
     demand: '//cmcp_demand.i5sesol.com',
     supply: '//cmcp_supply.i5sesol.c.com',
@@ -32,19 +32,19 @@ const config = {
   },
   // 开发环境
   'dev': {
-    home: '//home.cmcp.dev',
-    demand: '//home.cmcp.dev',
-    supply: '//home.cmcp.dev',
-    admin: '//home.cmcp.dev',
+    home: '//static_page.cmcp.dev',
+    demand: '//demand.cmcp.dev',
+    supply: '//supply.cmcp.dev',
+    admin: '//admin.cmcp.dev',
     api: '//api.dev',
     apiPath: '//api.dev/cgi'
   },
   // 其他环境
   'other': {
     home: '//home.cmcp.dev',
-    demand: '//home.cmcp.dev',
-    supply: '//home.cmcp.dev',
-    admin: '//home.cmcp.dev',
+    demand: '//demand.cmcp.dev',
+    supply: '//supply.cmcp.dev',
+    admin: '//admin.cmcp.dev',
     api: '//api.dev',
     apiPath: '//api.dev/cgi'
   }
@@ -58,17 +58,17 @@ function createDomain (host) {
       ...config['prod'],
       tld: topDomain
     }
-  } else if (topDomain === 'pre.isesol.com') {
+  } else if (topDomain === 'preisesol.com') {
     DOMAIN = {
       ...config['pre'],
       tld: topDomain
     }
-  } else if (topDomain === 'pre.isesol.com') {
+  } else if (topDomain === 'i5sesol.com') {
     DOMAIN = {
-      ...config['beta'],
+      ...config['test'],
       tld: topDomain
     }
-  } else if (topDomain === 'pre.isesol.com') {
+  } else if (topDomain === 'cmcp.dev') {
     DOMAIN = {
       ...config['dev'],
       tld: topDomain

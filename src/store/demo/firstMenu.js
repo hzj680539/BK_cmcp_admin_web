@@ -17,33 +17,9 @@ const mutations = {
 }
 
 const actions = {
-  // normal (has token)
-  'a:demo/firstMenu/getXxx1' ({commit}, params) {
-    ajax.api({
-      cmd: 'operation/userAndOwner/userNameIdList',
-      parameters: params
-    }).then(
-      res => {
-        commit('m:demo/firstMenu/xxx', res)
-      },
-      rej => {
-        // commit('m:demo/firstMenu/xxx', '')
-      }
-    )
-  },
   // normal (no token)
-  'a:demo/firstMenu/getXxx2' ({commit}, params) {
-    ajax.apiPublic({
-      cmd: '/xxx/xxx',
-      parameters: params
-    }).then(
-      res => {
-        commit('m:demo/firstMenu/xxx', res)
-      },
-      rej => {
-        commit('m:demo/firstMenu/xxx', '')
-      }
-    )
+  'a:demo/firstMenu/getXxx2' ({commit, dispatch}, params) {
+    dispatch('a:api/order/myEnquiry/saveDraft', params).then()
   },
   // has Promise
   'a:demo/firstMenu/setXxx' ({commit}, params) {

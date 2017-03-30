@@ -1,4 +1,5 @@
 import layout from '@/components/layout/Index'
+import { demo } from '@/cmd'
 
 // 子菜单
 const firstMenu = {
@@ -8,15 +9,15 @@ const firstMenu = {
 
 const routes = [
   {
-    path: '/demo',  // 模块
+    path: '/' + demo.$id,  // 模块
     component: layout,
     children: [
       {
-        path: 'first_menu/index',  // 子模块首页
+        path: demo.firstMenu.$id + '/index',  // 子模块首页
         component: firstMenu.index
       },
       {
-        path: 'first_menu/detail', // 子模块详情页
+        path: demo.firstMenu.$id + '/detail', // 子模块详情页
         component: firstMenu.detail
       }
     ]

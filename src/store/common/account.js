@@ -11,6 +11,13 @@ const mutations = {
   }
 }
 
+const actions = {
+  'a:common/account/authButton' ({state}, buttonName) {
+    return true
+  }
+}
+
 export default {
-  mutations
+  mutations,
+  actions
 }

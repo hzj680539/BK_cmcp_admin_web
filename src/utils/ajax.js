@@ -1,19 +1,33 @@
-import Vue from 'vue'
 import axios from 'axios'
-import { DOMAIN } from '@/utils/config'
 import store from '@/store'
+import cookies from 'js-cookie'
+import {DOMAIN, TOKEN_NAME} from '@/utils/config'
+import auth from '@/utils/auth'
 
 axios.defaults.baseURL = DOMAIN.apiPath
 
 export default {
   // 登陆后私有接口使用
-  api (params) {
+  api ({data, button}) {
     return new Promise((resolve, reject) => {
-      axios.post('/', params, {
+      // 判断cmd是否在按钮中配置
+      if (button && !auth.cmd(button, data.cmd)) {
+        const error = {
+          errorCode: '',
+          errorInfo: '代码错误，cmd未配置'
+        }
+        store.dispatch('a:common/tips/errorInfo', error.errorInfo)
+        reject(error)
+        return
+      }
+      // 触发ajax
+      axios.post('/', data, {
+        // 注入token
         data: {
-          userToken: Vue.cookie.get('userToken')
+          userToken: cookies.get(TOKEN_NAME)
         }
       }).then(
+        // 请求成功
         res => {
           if (res.data.error) {
             if (res.data.error.errorCode === 15) {
@@ -27,6 +41,7 @@ export default {
           }
         }
       ).catch(
+        // 请求失败
         res => {
           const error = {
             errorCode: res.status,
